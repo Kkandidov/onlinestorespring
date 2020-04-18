@@ -44,7 +44,7 @@
 					</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 						<security:authorize access="hasAuthority('USER')">
-							<a class="dropdown-item">
+							<a class="dropdown-item" id="userCart">
 								<a href="${contextRoot}/cart/show">
 									<span class="glyphicon glyphicon-shopping-cart"></span>
 									<span class="badge">${userModel.cart.cartItems}</span>
