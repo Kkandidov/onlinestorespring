@@ -70,6 +70,24 @@ public class ProductDAOImpl implements ProductDAO {
                 + "products WHERE active = 1 AND category_id = " + category.getId());
     }
 
+    @Override
+    public int getCountProducts() throws BackendException {
+        logger.info("Invoking of getCountProducts()");
+        String sql = "SELECT COUNT(*) AS count_products FROM products";
+        int count = 0;
+        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)
+             ; ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                count = resultSet.getInt("count_products");
+            }
+            logger.info("The products count = {}", count);
+        }  catch (SQLException e) {
+            logger.error("SQLException", e);
+            throw new DatabaseException("SQLException", e);
+        }
+        return count;
+    }
+
     private List<Product> get(Entity entity, String sql) throws BackendException {
         logger.info("Invoking of get(String sql) method: sql = {}", sql);
         Product product;

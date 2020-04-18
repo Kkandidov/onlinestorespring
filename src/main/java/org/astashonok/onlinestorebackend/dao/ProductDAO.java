@@ -18,4 +18,6 @@ public interface ProductDAO extends EntityDAO<Product> {
     List<Product> getAllActiveByBrand(Brand brand) throws BackendException;
 
     List<Product> getAllActiveByCategory(Category category) throws BackendException;
+
+    int getCountProducts() throws BackendException;
 }

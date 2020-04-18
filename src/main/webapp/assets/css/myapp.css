@@ -32,6 +32,11 @@ html {
 	height: 100px;
 }
 
+.homeImg {
+	width: 250px;
+	height: 200px;
+}
+
 .carousel-indicators .active{
     background-color: #f00;
 }

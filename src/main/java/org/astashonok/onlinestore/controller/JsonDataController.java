@@ -1,20 +1,27 @@
 package org.astashonok.onlinestore.controller;
 
+import org.astashonok.onlinestore.util.ClassName;
 import org.astashonok.onlinestorebackend.dao.CategoryDAO;
 import org.astashonok.onlinestorebackend.dao.ProductDAO;
 import org.astashonok.onlinestorebackend.dto.Product;
 import org.astashonok.onlinestorebackend.exceptions.basicexception.BackendException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 @Controller
 @RequestMapping("/json/data")
 public class JsonDataController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ClassName.getCurrentClassName());
 
     @Autowired
     private ProductDAO productDAO;
@@ -27,7 +34,10 @@ public class JsonDataController {
         try {
             return productDAO.getAllActive();
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return null;
     }
@@ -38,7 +48,10 @@ public class JsonDataController {
         try {
             return productDAO.getAll();
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return null;
     }
@@ -49,7 +62,10 @@ public class JsonDataController {
         try {
             return productDAO.getAllActiveByCategory(categoryDAO.getById(id));
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return null;
     }

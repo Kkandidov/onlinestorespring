@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 import java.util.Objects;
 
@@ -123,7 +125,10 @@ public class ManagementController {
         try {
             return categoryDAO.getAllActive();
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return null;
     }
@@ -138,7 +143,10 @@ public class ManagementController {
         try {
             return brandDAO.getAllActive();
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return null;
     }

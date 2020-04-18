@@ -2,8 +2,10 @@ package org.astashonok.onlinestore.controller;
 
 import org.astashonok.onlinestore.exception.ProductNotFoundException;
 import org.astashonok.onlinestore.model.UserAutoModel;
+import org.astashonok.onlinestore.serviceImpl.HomeService;
 import org.astashonok.onlinestore.service.SecurityService;
 import org.astashonok.onlinestore.service.UserAutoModelService;
+import org.astashonok.onlinestore.util.ClassName;
 import org.astashonok.onlinestore.validator.UserAutoModelValidator;
 import org.astashonok.onlinestorebackend.dao.CategoryDAO;
 import org.astashonok.onlinestorebackend.dao.DescriptionDAO;
@@ -14,6 +16,8 @@ import org.astashonok.onlinestorebackend.dto.Category;
 import org.astashonok.onlinestorebackend.dto.Product;
 import org.astashonok.onlinestorebackend.dto.User;
 import org.astashonok.onlinestorebackend.exceptions.basicexception.BackendException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,9 +30,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 @Controller
 public class PageController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ClassName.getCurrentClassName());
 
     @Autowired
     private CategoryDAO categoryDAO;
@@ -44,6 +52,8 @@ public class PageController {
     private SecurityService securityService;
     @Autowired
     private UserAutoModelValidator userAutoModelValidator;
+    @Autowired
+    private HomeService homeService;
 
     @RequestMapping(value = {"/", "/home", "/index"})
     public ModelAndView index() {
@@ -52,8 +62,12 @@ public class PageController {
             modelAndView.addObject("title", "Home");
             modelAndView.addObject("categories", categoryDAO.getAllActive());
             modelAndView.addObject("homeClicked", true);
+            modelAndView.addObject("listProducts", homeService.getProducts());
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return modelAndView;
     }
@@ -82,7 +96,10 @@ public class PageController {
             modelAndView.addObject("categories", categoryDAO.getAllActive());
             modelAndView.addObject("allProductsClicked", true);
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return modelAndView;
     }
@@ -97,7 +114,10 @@ public class PageController {
             modelAndView.addObject("category", category);
             modelAndView.addObject("categoryProductsClicked", true);
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return modelAndView;
     }
@@ -117,7 +137,10 @@ public class PageController {
             modelAndView.addObject("showSingleProductClicked", true);
             modelAndView.addObject("userClickShowProduct", true);
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return modelAndView;
     }

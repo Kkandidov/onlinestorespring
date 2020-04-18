@@ -67,6 +67,13 @@ public class ProductDAOImplTest {
     }
 
     @Test
+    public void getCountProducts() throws BackendException {
+        int expected = 3;
+        int actual = productDAO.getCountProducts();
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void add() throws BackendException {
         Product expected = new Product("Samsung", brand1, 300, 8
                 , true, category1);

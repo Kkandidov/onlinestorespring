@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 
 @Component
 public class UserAutoModelValidator implements Validator {
+
     @Autowired
     private UserAutoModelService userAutoModelService;
 

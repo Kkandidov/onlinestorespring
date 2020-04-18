@@ -1,6 +1,7 @@
 package org.astashonok.onlinestore.serviceImpl;
 
 import org.astashonok.onlinestore.model.UserModel;
+import org.astashonok.onlinestore.util.ClassName;
 import org.astashonok.onlinestorebackend.dao.CartDAO;
 import org.astashonok.onlinestorebackend.dao.CartItemDAO;
 import org.astashonok.onlinestorebackend.dao.ProductDAO;
@@ -8,14 +9,21 @@ import org.astashonok.onlinestorebackend.dto.Cart;
 import org.astashonok.onlinestorebackend.dto.CartItem;
 import org.astashonok.onlinestorebackend.dto.Product;
 import org.astashonok.onlinestorebackend.exceptions.basicexception.BackendException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 @Service("cartService")
 public class CartService {
+
+    private static final Logger logger = LoggerFactory.getLogger(ClassName.getCurrentClassName());
+
     @Autowired
     private CartItemDAO cartItemDAO;
     @Autowired
@@ -35,7 +43,10 @@ public class CartService {
         try {
             return cartItemDAO.getByCart(this.getCart());
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return null;
     }
@@ -61,7 +72,10 @@ public class CartService {
                 return "result=updated";
             }
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return null;
     }
@@ -80,7 +94,10 @@ public class CartService {
                 return "result=deleted";
             }
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return null;
     }
@@ -112,7 +129,10 @@ public class CartService {
                 }
             }
         } catch (BackendException e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            logger.error(stringWriter.toString());
         }
         return response;
     }

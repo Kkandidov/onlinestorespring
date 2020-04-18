@@ -1,10 +1,7 @@
 package org.astashonok.onlinestore.validator;
 
-import org.astashonok.onlinestore.util.ClassName;
 import org.astashonok.onlinestorebackend.dto.Product;
 import org.astashonok.onlinestorebackend.dto.View;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -13,8 +10,6 @@ import java.util.Objects;
 
 @Component
 public class ProductValidator implements Validator {
-
-    private static final Logger logger = LoggerFactory.getLogger(ClassName.getCurrentClassName());
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -60,12 +55,10 @@ public class ProductValidator implements Validator {
         }
         if (product.getFile() == null || Objects.equals(product.getFile().getOriginalFilename(), "")) {
             errors.rejectValue("file", "Product.null.file");
-            logger.debug(String.valueOf(errors));
             return;
         }
         if (!(Objects.equals(product.getFile().getContentType(), "image/jpeg"))) {
             errors.rejectValue("file", "Product.notImage.file");
         }
-        logger.debug(String.valueOf(errors));
     }
 }
