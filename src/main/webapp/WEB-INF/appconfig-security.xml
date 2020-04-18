@@ -1,0 +1,34 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans.xsd
+		   http://www.springframework.org/schema/security
+		   http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http auto-config="true">
+        <!-- only admin access -->
+        <intercept-url pattern="/manage/**" access="hasAuthority('ADMIN')"/>
+        <!-- only user access (who is registered) -->
+        <intercept-url pattern="/cart/**" access="hasAuthority('USER')"/>
+        <!-- everyone access -->
+        <intercept-url pattern="/**" access="permitAll"/>
+        <form-login login-page="/login"
+                    default-target-url="/home"
+                    authentication-failure-url="/login?error"
+                    username-parameter="email"
+                    password-parameter="password"/>
+        <logout logout-success-url="/perform-logout"/>
+        <access-denied-handler error-page="/access-denied"/>
+    </http>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <password-encoder ref="encoder"/>
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="userDetailsServiceImpl" class="org.astashonok.onlinestore.serviceImpl.UserDetailServiceImpl"/>
+    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+</beans:beans>

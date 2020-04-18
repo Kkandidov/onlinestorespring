@@ -39,48 +39,52 @@ $(function() {
 				dataSrc: ''
 			},
 			columns:[
-					{
-						data: null,
-						render: function(data, type, row){
-							 return '<img src="' + window.contextRoot+ '/resources/images/products/' + data.id + '/'
-							 + data.code + '.jpeg" class="dataTableImg"/>';
-						}
-					},
-					{
-						data: 'name'
-					},
-					{
-						data: 'brand'
-					},
-					{
-						data: 'unitPrice',
-						mRender: function(data, type, row){
-							 return '$ ' + data;
-						}
-					},
-					{
-						data: 'quantity',
-                        mRender: function(data, type, row){
-                            if(data < 1){
-                        	    return '<span style=color:red>Out of Stock!</span>';
-                        	}
-                        	return data;
-                        }
-					},
-					{
-						data: 'id',
-						bSortable: false,
-						render: function(data, type, row){
-							var str = '';
-							str += '<a href="' + window.contextRoot + '/show/' + data + '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open" aria-label="Left Align"></span></a>';
-							if(row.quantity < 1) {
-                                str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart" aria-label="Left Align"></span></a>';
-							}else{
-							    str += '<a href="' + window.contextRoot + '/cart/add/' + data + '/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-label="Left Align"></span></a>';
+						{
+							data: null,
+							render: function(data, type, row){
+								return '<img src="' + window.contextRoot+ '/resources/images/products/' + data.id + '/'
+								+ data.code + '.jpeg" class="dataTableImg"/>';
 							}
-							return str;
+						},
+						{
+							data: 'name'
+						},
+						{
+							data: 'brand'
+						},
+						{
+							data: 'unitPrice',
+							mRender: function(data, type, row){
+								return '$ ' + data;
+							}
+						},
+						{
+							data: 'quantity',
+							mRender: function(data, type, row){
+								if(data < 1){
+									return '<span style=color:red>Out of Stock!</span>';
+								}
+								return data;
+							}
+						},
+						{
+							data: 'id',
+							bSortable: false,
+							render: function(data, type, row){
+								var str = '';
+								str += '<a href="' + window.contextRoot + '/show/' + data + '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open" aria-label="Left Align"></span></a>';
+								if(userRole == 'ADMIN'){
+									str += '<a href="' + window.contextRoot + '/manage/' + data + '/product" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-label="Left Align"></span></a>';
+								} else {
+									if(row.quantity < 1) {
+									str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart" aria-label="Left Align"></span></a>';
+									}else{
+										str += '<a href="' + window.contextRoot + '/cart/add/' + data + '/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-label="Left Align"></span></a>';
+									}
+								}
+								return str;
+							}
 						}
-					}
 					]
 			});
         }

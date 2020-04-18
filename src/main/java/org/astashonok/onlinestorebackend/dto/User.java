@@ -165,13 +165,7 @@ public class User extends Entity {
         return confirmPassword;
     }
 
-    public void setConfirmPassword(String confirmPassword) throws BackendLogicalException {
-        if (confirmPassword == null) {
-            throw new NullReferenceException("The confirmPassword must not be null! ");
-        }
-        if (confirmPassword.isEmpty()){
-            throw new EmptyFieldException("The confirmPassword must not be empty! ");
-        }
+    public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
 

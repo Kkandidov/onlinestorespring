@@ -9,6 +9,7 @@
 
     <import resource="appconfig-mvc.xml"/>
     <import resource="appconfig-dao.xml"/>
+    <import resource="appconfig-security.xml"/>
 	
 	<context:component-scan base-package="org.astashonok.onlinestore"/>
 	

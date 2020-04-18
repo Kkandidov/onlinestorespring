@@ -1,6 +1,7 @@
 package org.astashonok.onlinestorebackend.daoImpl;
 
 import org.astashonok.onlinestorebackend.dto.Cart;
+import org.astashonok.onlinestorebackend.dto.User;
 import org.astashonok.onlinestorebackend.exceptions.basicexception.BackendException;
 import org.astashonok.onlinestorebackend.testconfig.SimpleSingleConnection;
 import org.junit.*;
@@ -35,6 +36,13 @@ public class CartDAOImplTest {
         Cart expected = cart2;
         Cart actual = cartDAO.getByUser(user2);
         assertEquals(expected, actual);
+    }
+
+    public static void main(String[] args) throws BackendException {
+        User user = userDAO.getByEmail("petr@gmail.com");
+        System.out.println(user);
+        Cart cart = cartDAO.getByUser(user);
+        System.out.println(cart.getTotal());
     }
 
     @Test

@@ -119,27 +119,6 @@ public class UserTest {
         assertSame(role2, user.getRole());
     }
 
-    // if the reference to confirmPassword is null
-    @Test(expected = NullReferenceException.class)
-    public void setConfirmPasswordIsNull() throws BackendLogicalException {
-        user.setConfirmPassword(null);
-    }
-
-    // if the reference to confirmPassword is empty
-    @Test(expected = EmptyFieldException.class)
-    public void setConfirmPasswordIsEmpty() throws BackendLogicalException {
-        user.setConfirmPassword("");
-    }
-
-    // if the reference to confirmPassword is correct
-    @Test
-    public void setConfirmPassword() throws BackendLogicalException {
-        user.setConfirmPassword("n!k@sn1Kos");
-        String expected = "n!k@sn1Kos";
-        String actual = user.getConfirmPassword();
-        assertEquals(expected, actual);
-    }
-
     // if the reference to address is null
     @Test(expected = NullReferenceException.class)
     public void setAddressesIsNull() throws NullReferenceException {
