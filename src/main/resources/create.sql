@@ -130,6 +130,7 @@ CREATE TABLE cart_items(
 	CONSTRAINT	fk_cart_items_cart_id		FOREIGN KEY	(cart_id)		REFERENCES	carts		(id)	ON DELETE CASCADE,
 	CONSTRAINT	fk_cart_items_product_id	FOREIGN KEY	(product_id)	REFERENCES	products	(id)	ON DELETE CASCADE
 )ENGINE = InnoDB;
+
 -- orders table
 CREATE TABLE orders(
 	id				INT				NOT NULL	AUTO_INCREMENT,

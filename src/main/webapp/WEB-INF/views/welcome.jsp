@@ -13,10 +13,10 @@
         <title>Online Store - ${title}</title>
  	
         <!-- Bootstrap core CSS -->
-        <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${contextRoot}/resources/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="/resources/css/myapp.css" rel="stylesheet">
+        <link href="${contextRoot}/resources/css/myapp.css" rel="stylesheet">
     </head>
 
     <body>

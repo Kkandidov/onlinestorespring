@@ -13,16 +13,16 @@
         <title>Online Store - ${title}</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${contextRoot}/resources/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Bootstrap DataTable -->
-        <link href="/resources/css/dataTables.bootstrap.css" rel="stylesheet">
+        <link href="${contextRoot}/resources/css/dataTables.bootstrap.css" rel="stylesheet">
 
         <!-- Bootstrap glyphicons-->
-        <link href="/resources/css/bootstrap-glyphicons.css" rel="stylesheet">
+        <link href="${contextRoot}/resources/css/bootstrap-glyphicons.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="/resources/css/myapp.css" rel="stylesheet">
+        <link href="${contextRoot}/resources/css/myapp.css" rel="stylesheet">
 
     </head>
     <body>
@@ -97,14 +97,14 @@
             </div>
 
             <!-- Bootstrap core JavaScript -->
-            <script src="/resources/js/jquery/jquery.min.js"></script>
-            <script src="/resources/js/bootstrap.bundle.min.js"></script>
+            <script src="${contextRoot}/resources/js/jquery/jquery.min.js"></script>
+            <script src="${contextRoot}/resources/js/bootstrap.bundle.min.js"></script>
 
             <!-- jQuery Validator-->
-            <script src="/resources/js/jquery.validate.js"></script>
+            <script src="${contextRoot}/resources/js/jquery.validate.js"></script>
 
            	<!-- Self coded javascript -->
-            <script src="/resources/js/myapp.js"></script>
+            <script src="${contextRoot}/resources/js/myapp.js"></script>
         </div>
     </body>
 </html>

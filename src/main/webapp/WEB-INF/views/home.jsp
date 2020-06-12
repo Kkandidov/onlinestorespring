@@ -14,19 +14,19 @@
 				</ol>
 				<div class="carousel-inner" role="listbox">
 					<div class="carousel-item active">
-						<img class="d-block img-fluid" src="/resources/images/banner1.jpg" alt="First slide">
+						<img class="d-block img-fluid" src="${contextRoot}/resources/images/banner1.jpg" alt="First slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block img-fluid" src="/resources/images/banner2.jpg" alt="Second slide">
+						<img class="d-block img-fluid" src="${contextRoot}/resources/images/banner2.jpg" alt="Second slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block img-fluid" src="/resources/images/banner3.jpg" alt="Third slide">
+						<img class="d-block img-fluid" src="${contextRoot}/resources/images/banner3.jpg" alt="Third slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block img-fluid" src="/resources/images/banner4.jpg" alt="Fourth slide">
+						<img class="d-block img-fluid" src="${contextRoot}/resources/images/banner4.jpg" alt="Fourth slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block img-fluid" src="/resources/images/banner5.jpg" alt="Fifth slide">
+						<img class="d-block img-fluid" src="${contextRoot}/resources/images/banner5.jpg" alt="Fifth slide">
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -42,7 +42,7 @@
 				<c:forEach items="${listProducts}" var="product">
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
-							<a href="${contextRoot}/show/${product.id}/product"><img class="card-img-top homeImg" src="/resources/images/products/${product.id}/${product.code}.jpeg"></a>
+							<a href="${contextRoot}/show/${product.id}/product"><img class="card-img-top homeImg" src="${contextRoot}/resources/images/products/${product.id}/${product.code}.jpeg"></a>
 							<div class="card-body">
 								<h4 class="card-title">
 									<a href="${contextRoot}/show/${product.id}/product">${product.name}</a>

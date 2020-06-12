@@ -26,7 +26,7 @@
 							<td data-th="Product">
 								<div class="row">
 									<div class="col-sm-2 hidden-xs">
-										<img src="/resources/images/products/${cartItem.product.id}/${cartItem.product.code}.jpeg" alt="${cartItem.product.name}" class="img-responsive cartImg"/>
+										<img src="${contextRoot}/resources/images/products/${cartItem.product.id}/${cartItem.product.code}.jpeg" alt="${cartItem.product.name}" class="img-responsive cartImg"/>
 									</div>
 								</div>
 							</td>

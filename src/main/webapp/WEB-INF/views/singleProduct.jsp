@@ -21,11 +21,11 @@
 				</ol>
 				<div class="carousel-inner" role="listbox">
 					<div class="carousel-item active">
-						<img class="d-block img-fluid" src="/resources/images/products/${product.id}/${product.code}.jpeg">
+						<img class="d-block img-fluid" src="${contextRoot}/resources/images/products/${product.id}/${product.code}.jpeg">
 					</div>
 					<c:forEach items="${views}" var="view">
 						<div class="carousel-item">
-							<img class="d-block img-fluid" src="/resources/images/products/${product.id}/${view.code}.jpeg">
+							<img class="d-block img-fluid" src="${contextRoot}/resources/images/products/${product.id}/${view.code}.jpeg">
 						</div>
 					</c:forEach>
 				</div>
